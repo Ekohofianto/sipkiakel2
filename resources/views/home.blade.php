@@ -1,17 +1,16 @@
 @extends('layouts.admin')
 
 @section('main-content')
-
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">{{ __('Dashboard') }}</h1>
 
     @if (session('success'))
-    <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+        <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     @endif
 
     @if (session('status'))
@@ -20,201 +19,215 @@
         </div>
     @endif
 
+    <!-- Start Card -->
+
     <div class="row">
 
-        <!-- Earnings (Monthly) Card Example -->
+        <!-- Data Ibu -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
+            <a href="{{ route('ibu') }}" class="card border-bottom-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Data (Ibu)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['total_ibu'] }}</div>
+                            <!-- Mengakses total data ibu dari array data_ibu -->
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            <i class="fa-solid fa-person-breastfeeding fa-3x text-success"></i>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
-        <!-- Earnings (Monthly) Card Example -->
+
+        <!-- Pemeriksaan Ibu -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
+            <a href="{{ route('p_ibu') }}" class="card border-bottom-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pemeriksaan (Ibu)</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $widget['total_p_ibu'] }}
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 10%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            <i class="fa-solid fa-hospital-user fa-3x text-warning"></i>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
-        <!-- Users -->
+        <!-- Data Balita -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
+            <a href="{{ route('balita') }}" class="card border-bottom-danger shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">{{ __('Users') }}</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['users'] }}</div>
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Data (Balita)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $widget['total_balita'] }}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                            <i class="fa-solid fa-children fa-3x text-danger"></i>
                         </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <!-- Pemeriksaan Balita -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{{ route('p_balita') }}" class="card border-bottom-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                {{ __('Pemeriksaan (Balita)') }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ $widget['total_p_balita'] }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-hands-holding-child fa-3x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- End Card -->
+
+    <div class="card-body">
+        <div class="row">
+            <!-- Bagian Grafik -->
+            <div class="col-lg-8 mb-4">
+                <div class="card border-bottom-primary shadow h-100 py-2">
+                    <div class="card-header">
+                        Grafik Total Per Bulan
+                    </div>
+                    <div class="card-body">
+                        <canvas id="garfik_e" width="800" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- Bagian Illustrasi -->
+            <div class="col-lg-4 mb-4">
+                <div class="card border-bottom-primary shadow h-100 py-2 shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Semangat Melayani Masyarakat</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 20rem;" src="img/svg/medical.svg"
+                                alt="...">
+                        </div>
+                        <p>Dalam perjalanan menuju kesuksesan, penting untuk mengutamakan kesehatan. Kesehatan yang baik
+                            adalah kunci untuk mencapai potensi penuh dan memberikan yang terbaik dalam pekerjaan. Jangan
+                            lupakan istirahat yang cukup, makan makanan bergizi, dan tetap aktif secara fisik!</p>
+                        <a target="_blank" rel="nofollow"
+                            href="https://www.rskariadi.co.id/news/171/Kenapa-Harus-Istirahat-Cukup/Artikel#:~:text=Dengan%20istirahat%20yang%20cukup%20tubuh,memperhatikan%20jalan%20juga%20akan%20menurun.">Jangan
+                            Lupa Untuk Istirahat &rarr;</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
 
-    <div class="row">
+@section('scripts')
+    <script>
+        var labels = [];
+        var totalIbuData = [];
+        var totalBalitaData = [];
+        var totalPIbuData = [];
+        var totalPBalitaData = [];
 
-        <!-- Content Column -->
-        <div class="col-lg-6 mb-4">
+        // Buat label untuk 12 bulan
+        var monthNames = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober',
+            'November', 'Desember'
+        ];
+        var currentYear = new Date().getFullYear();
 
-            <!-- Project Card Example -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
-                </div>
-                <div class="card-body">
-                    <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                    <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
+        for (var i = 0; i < 12; i++) {
+            labels.push(monthNames[i] + ' ' + currentYear);
+            totalIbuData.push(0); // Inisialisasi dengan nilai 0
+            totalBalitaData.push(0); // Inisialisasi dengan nilai 0
+            totalPIbuData.push(0); // Inisialisasi dengan nilai 0
+            totalPBalitaData.push(0); // Inisialisasi dengan nilai 0
+        }
 
-            <!-- Color System -->
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-primary text-white shadow">
-                        <div class="card-body">
-                            Primary
-                            <div class="text-white-50 small">#4e73df</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-success text-white shadow">
-                        <div class="card-body">
-                            Success
-                            <div class="text-white-50 small">#1cc88a</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-info text-white shadow">
-                        <div class="card-body">
-                            Info
-                            <div class="text-white-50 small">#36b9cc</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-warning text-white shadow">
-                        <div class="card-body">
-                            Warning
-                            <div class="text-white-50 small">#f6c23e</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-danger text-white shadow">
-                        <div class="card-body">
-                            Danger
-                            <div class="text-white-50 small">#e74a3b</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="card bg-secondary text-white shadow">
-                        <div class="card-body">
-                            Secondary
-                            <div class="text-white-50 small">#858796</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        // Isi data berdasarkan bulan
+        @foreach ($totalIbuMonthly as $data)
+            var monthIndex = new Date("{{ $data->month }}").getMonth();
+            totalIbuData[monthIndex] = {{ $data->total_ibu }};
+        @endforeach
 
-        </div>
+        @foreach ($totalBalitaMonthly as $data)
+            var monthIndex = new Date("{{ $data->month }}").getMonth();
+            totalBalitaData[monthIndex] = {{ $data->total_balita }};
+        @endforeach
 
-        <div class="col-lg-6 mb-4">
+        @foreach ($totalPIbuMonthly as $data)
+            var monthIndex = new Date("{{ $data->month }}").getMonth();
+            totalPIbuData[monthIndex] = {{ $data->total_p_ibu }};
+        @endforeach
 
-            <!-- Illustrations -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                </div>
-                <div class="card-body">
-                    <div class="text-center">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{{ asset('img/svg/undraw_editable_dywm.svg') }}" alt="">
-                    </div>
-                    <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw →</a>
-                </div>
-            </div>
+        @foreach ($totalPBalitaMonthly as $data)
+            var monthIndex = new Date("{{ $data->month }}").getMonth();
+            totalPBalitaData[monthIndex] = {{ $data->total_p_balita }};
+        @endforeach
 
-            <!-- Approach -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                </div>
-                <div class="card-body">
-                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                    <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
+        var ctx = document.getElementById('garfik_e').getContext('2d');
+        var garfik_e = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels, // Gunakan labels yang sudah diisi
+                datasets: [{
+                        label: 'Total Ibu',
+                        data: totalIbuData,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                    },
+                    {
+                        label: 'Total Balita',
+                        data: totalBalitaData,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                    },
+                    {
+                        label: 'Total Pemeriksaan Ibu',
+                        data: totalPIbuData,
+                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                    },
+                    {
+                        label: 'Total Pemeriksaan Balita',
+                        data: totalPBalitaData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 @endsection
